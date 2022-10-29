@@ -1,3 +1,6 @@
 .idea/
 venv/
 tmp/
+
+horse-or-human/
+*.zip
