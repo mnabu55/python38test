@@ -33,7 +33,39 @@ model.compile(optimizer='adam',
               metrics=["accuracy"])
 
 # train the model
-model.fit(training_images, training_labels, epochs=5)
+history = model.fit(training_images, training_labels, epochs=5)
 
 # evaluate on the test set
 test_loss = model.evaluate(test_images, test_labels)
+
+
+import matplotlib.pyplot as plt
+
+
+#-----------------------------------------------------------
+# Retrieve a list of list results on training and test data
+# sets for each training epoch
+#-----------------------------------------------------------
+acc = history.history['accuracy']
+#val_acc = history.history['val_accuracy']
+loss = history.history['loss']
+#val_loss = history.history['val_loss']
+
+epochs = range(len(acc))    # Get number of epochs
+
+#------------------------------------------------
+# Plot training and validation accuracy per epoch
+#------------------------------------------------
+plt.plot(epochs, acc)
+#plt.plot(epochs, val_acc)
+plt.title('Training accuracy')
+plt.figure()
+
+#------------------------------------------------
+# Plot training and validation loss per epoch
+#------------------------------------------------
+plt.plot(epochs, loss)
+# plt.plot  ( epochs, val_loss )
+plt.title ('Training loss'   )
+
+plt.show()
